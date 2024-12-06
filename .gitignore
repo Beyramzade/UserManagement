@@ -7,3 +7,7 @@
 /Usermanagement.Domain/obj
 /Usermanagement.Infrastructure/obj
 /UserManagement.Web/obj
+/Usermanagement.Application/bin/Debug/net8.0
+/Usermanagement.Domain/bin/Debug/net8.0
+/Usermanagement.Infrastructure/bin/Debug/net8.0
+/UserManagement.Web/bin/Debug/net8.0
