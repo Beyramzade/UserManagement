@@ -41,9 +41,11 @@ namespace Usermanagement.Application.Register
             var userInfo = _identityRepository.GetUserByEmail(command.Email);
             if (userInfo == null)
             {
-                var activationCode = new ActivationCode();
+                var activationCode = new ActivationCode(command.Email);
+                activationCode.GenerateCode(_isTest);
+
                 await _identityRepository.UpdateActivationCodes(command.Email);
-                await _identityRepository.AddActivationCode();
+                await _identityRepository.AddActivationCode(activationCode);
 
                 var sendActivationCodeRequest = new SendActivationCodeModel(command.Email, _userName, _subject, activationCode.Code
                     , command.MobileNumber, command.DeliveryType);

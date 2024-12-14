@@ -28,6 +28,10 @@ namespace UserManagement.Web.Controller
         public async Task<IActionResult> RegisterationRequest(RegisterationCommand command)
         {
             var result = await _mediator.Send(command);
+            if(result.IsSuccess)
+                return Ok(result);
+            else
+                return BadRequest(result); 
         }
 
 }

@@ -6,7 +6,7 @@ namespace Usermanagement.Domain.User
     public class ActivationCode
     {
         public ObjectId _id { get; set; }
-        public string MobileNumber { get; private set; }
+        public string Email { get; private set; }
         public string Code { get; private set; }
         public long TimeStamp { get; private set; }
         public bool IsActive { get; set; }
@@ -17,16 +17,16 @@ namespace Usermanagement.Domain.User
         }
 
         [JsonConstructor]
-        public ActivationCode(string mobileNumber, string code)
+        public ActivationCode(string email, string code)
         {
-            MobileNumber = mobileNumber;
+            Email = email;
             Code = code;
 
         }
 
-        public ActivationCode(string mobileNumber)
+        public ActivationCode(string email)
         {
-            MobileNumber = mobileNumber;
+            Email = email;
             IsActive = true;
         }
 
