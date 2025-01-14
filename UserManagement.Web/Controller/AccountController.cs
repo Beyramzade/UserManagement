@@ -10,9 +10,14 @@ namespace UserManagement.Web.Controller
     {
         private readonly IMediator _mediator;
 
+        public AccountController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
 
-        [HttpGet]
+
+        [HttpGet("HealthCheck")]
         public object Test()
         {
             var me = new
@@ -24,7 +29,7 @@ namespace UserManagement.Web.Controller
             return me;
         }
 
-        [HttpPost]
+        [HttpPost("RegisterationRequest")]
         public async Task<IActionResult> RegisterationRequest(RegisterationCommand command)
         {
             var result = await _mediator.Send(command);
