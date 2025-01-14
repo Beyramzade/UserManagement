@@ -27,11 +27,12 @@ namespace Usermanagement.Infrastructure.Repository
 
         public async Task<bool> UpdateActivationCodes(string email)
         {
-            var filter = Builders<ActivationCode>.Filter.Eq("email", email);
+            var filter = Builders<ActivationCode>.Filter.Eq(a => a.Email, email);
 
             // Define the update operation
             var update = Builders<ActivationCode>.Update
-                .Set("IsActive", false);// Update the "Age" field to 30
+                .Set(a => a.IsActive, false);
+
             // Execute the update operation
             var updateResult = await _collection.UpdateOneAsync(filter, update);
             return true;
